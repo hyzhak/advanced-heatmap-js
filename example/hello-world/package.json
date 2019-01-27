@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/hyzhak/advanced-heatmap-js#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1"
   }
