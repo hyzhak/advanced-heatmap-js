@@ -66,8 +66,7 @@ typings/
 .idea
 
 # build
-server/api/swagger
-static/dist
+dist
 
 # MacOS
 .DS_Store
