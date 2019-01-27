@@ -1,0 +1,27 @@
+{
+  "name": "advanced-heatmap-js-example-hello-world",
+  "version": "0.1.0",
+  "description": "hello world example of advanced heatmap js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyzhak/advanced-heatmap-js.git"
+  },
+  "keywords": [
+    "heatmap",
+    "example"
+  ],
+  "author": {
+    "name": "Eugene Krenevenets",
+    "email": "ievgenii.krevenets@gmail.com",
+    "url": "http://hyzhak.github.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyzhak/advanced-heatmap-js/issues"
+  },
+  "homepage": "https://github.com/hyzhak/advanced-heatmap-js#readme"
+}
