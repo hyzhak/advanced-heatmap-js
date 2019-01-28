@@ -26,15 +26,18 @@ function createHeatmap () {
     } else if (x < 0) {
       x += width;
     }
-    if (y > width) {
-      y -= width;
+    if (y > height) {
+      y -= height;
     } else if (y < 0) {
-      y += width;
+      y += height;
     }
     hp.add([x, y, 10 * Math.random()]);
   }
 
-  hp.render();
+  console.time('render');
+  hp.render().then(() => {
+    console.timeEnd('render');
+  });
 
   return canvas;
 }
