@@ -1,8 +1,8 @@
 import HeatMap from '../../..'
 
 function createHeatmap () {
-  const width = 256;
-  const height = 256;
+  const width = 512;
+  const height = 512;
   const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
@@ -17,10 +17,10 @@ function createHeatmap () {
   let y = height / 2;
 
   // Brownian (random) motion
-  const step = 10;
+  const step = 8;
   for (let i = 0; i < numOfPoints; i++) {
-    x += step * Math.random() - 5;
-    y += step * Math.random() - 5;
+    x += step * Math.random() - step / 2;
+    y += step * Math.random() - step / 2;
     if (x > width) {
       x -= width;
     } else if (x < 0) {
@@ -31,7 +31,7 @@ function createHeatmap () {
     } else if (y < 0) {
       y += height;
     }
-    hp.add([x, y, 10 * Math.random()]);
+    hp.add([x, y, 16 * Math.random(), 0.1 + 0.2 * Math.random()]);
   }
 
   console.time('render');
