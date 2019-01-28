@@ -77,6 +77,9 @@ function staticData () {
 }
 
 function dynamicData () {
+  const maxD = 8;
+  const maxDD = 2;
+
   const width = 512;
   const height = 512;
   const canvas = document.createElement('canvas');
@@ -106,13 +109,15 @@ function dynamicData () {
       radius: {
         source: {
           idx: 3,
-          min: -1,
-          max: 1,
+          // min: -1,
+          // max: 1,
+          min: 0,
+          max: 2 * maxD * maxD
         },
 
         value: {
           min: 1,
-          max: 8
+          max: 16
         }
       }
     }
@@ -123,9 +128,6 @@ function dynamicData () {
   let dx = 0;
   let dy = 0;
 
-  const maxD = 8;
-  const maxDD = 2;
-
   let step = 0;
 
   setInterval(() => {
@@ -133,7 +135,8 @@ function dynamicData () {
     heatmap.add([
       x, y,
       Math.random(),
-      Math.sin(step / 100)
+      // Math.sin(step / 100)
+      dx * dx + dy * dy
     ]);
 
     dx += maxDD * Math.random() - maxDD / 2;
