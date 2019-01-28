@@ -58,7 +58,35 @@ function dynamicData () {
 
   const heatmap = new HeatMap({
     canvas,
-    smooth: 0.5
+    smooth: 0.5,
+
+    features: {
+      alpha: {
+        source: {
+          idx: 2,
+          min: 0,
+          max: 100
+        },
+
+        value: {
+          min: 0.1,
+          max: 0.2
+        }
+      },
+
+      radius: {
+        source: {
+          idx: 3,
+          min: 0,
+          max: 256,
+        },
+
+        value: {
+          min: 1,
+          max: 8
+        }
+      }
+    }
   });
 
   let x = width / 2;
