@@ -1,1 +1,1 @@
-module.exports = require('./lib/heatmap')
+module.exports = require('./lib/heatmap');

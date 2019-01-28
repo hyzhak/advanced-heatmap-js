@@ -57,7 +57,8 @@ function dynamicData () {
   document.body.appendChild(canvas);
 
   const heatmap = new HeatMap({
-    canvas
+    canvas,
+    smooth: 0.5
   });
 
   let x = width / 2;
