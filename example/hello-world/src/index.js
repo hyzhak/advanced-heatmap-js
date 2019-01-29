@@ -8,7 +8,36 @@ function createHeatmap () {
   canvas.height = height;
 
   const hp = new HeatMap({
-    canvas
+    canvas,
+    smooth: 0.5,
+
+    features: {
+      alpha: {
+        source: {
+          idx: 2,
+          min: 0,
+          max: 1
+        },
+
+        value: {
+          min: 0.1,
+          max: 0.2
+        }
+      },
+
+      radius: {
+        source: {
+          idx: 3,
+          min: -1,
+          max: 1,
+        },
+
+        value: {
+          min: 1,
+          max: 8
+        }
+      }
+    }
   });
 
   const numOfPoints = 1000;
@@ -48,6 +77,9 @@ function staticData () {
 }
 
 function dynamicData () {
+  const maxD = 8;
+  const maxDD = 2;
+
   const width = 512;
   const height = 512;
   const canvas = document.createElement('canvas');
@@ -57,7 +89,38 @@ function dynamicData () {
   document.body.appendChild(canvas);
 
   const heatmap = new HeatMap({
-    canvas
+    canvas,
+    smooth: 0.5,
+
+    features: {
+      alpha: {
+        source: {
+          idx: 2,
+          min: 0,
+          max: 1
+        },
+
+        value: {
+          min: 0.1,
+          max: 0.2
+        }
+      },
+
+      radius: {
+        source: {
+          idx: 3,
+          // min: -1,
+          // max: 1,
+          min: 0,
+          max: 2 * maxD * maxD
+        },
+
+        value: {
+          min: 1,
+          max: 16
+        }
+      }
+    }
   });
 
   let x = width / 2;
@@ -65,19 +128,16 @@ function dynamicData () {
   let dx = 0;
   let dy = 0;
 
-  const minRadius = 1;
-  const maxRadius = 8;
-  const maxD = 8;
-  const maxDD = 2;
-
   let step = 0;
 
   setInterval(() => {
     step++;
-    const radius = minRadius + (maxRadius - minRadius) * (1 + Math.sin(step / 100));
-    const alpha = 0.1 + 0.1 * Math.random();
-    // const alpha = 0.5 + Math.sin(step / 33 + 3) / 2;
-    heatmap.add([x, y, radius, alpha]);
+    heatmap.add([
+      x, y,
+      Math.random(),
+      // Math.sin(step / 100)
+      dx * dx + dy * dy
+    ]);
 
     dx += maxDD * Math.random() - maxDD / 2;
     dy += maxDD * Math.random() - maxDD / 2;
