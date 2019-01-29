@@ -1,11 +1,11 @@
 import HeatMap from '../../..'
 
 function createHeatmap () {
-  const width = 512;
-  const height = 512;
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
+  const width = 512
+  const height = 512
+  const canvas = document.createElement('canvas')
+  canvas.width = width
+  canvas.height = height
 
   const hp = new HeatMap({
     canvas,
@@ -29,7 +29,7 @@ function createHeatmap () {
         source: {
           idx: 3,
           min: -1,
-          max: 1,
+          max: 1
         },
 
         value: {
@@ -38,55 +38,54 @@ function createHeatmap () {
         }
       }
     }
-  });
+  })
 
-  const numOfPoints = 1000;
+  const numOfPoints = 1000
 
-  let x = width / 2;
-  let y = height / 2;
+  let x = width / 2
+  let y = height / 2
 
   // Brownian (random) motion
-  const step = 8;
+  const step = 8
   for (let i = 0; i < numOfPoints; i++) {
-    x += step * Math.random() - step / 2;
-    y += step * Math.random() - step / 2;
+    x += step * Math.random() - step / 2
+    y += step * Math.random() - step / 2
     if (x > width) {
-      x -= width;
+      x -= width
     } else if (x < 0) {
-      x += width;
+      x += width
     }
     if (y > height) {
-      y -= height;
+      y -= height
     } else if (y < 0) {
-      y += height;
+      y += height
     }
-    hp.add([x, y, 16 * Math.random(), 0.1 + 0.2 * Math.random()]);
+    hp.add([x, y, 16 * Math.random(), 0.1 + 0.2 * Math.random()])
   }
 
-  console.time('render');
+  console.time('render')
   hp.render().then(() => {
-    console.timeEnd('render');
-  });
+    console.timeEnd('render')
+  })
 
-  return canvas;
+  return canvas
 }
 
-
 function staticData () {
-  document.body.appendChild(createHeatmap());
+  document.body.appendChild(createHeatmap())
 }
 
 function dynamicData () {
-  const maxD = 8;
-  const maxDD = 2;
+  const maxD = 8
+  const maxDD = 2
 
-  const width = 512;
-  const height = 512;
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
+  const width = 512
+  const height = 512
+  const canvas = document.createElement('canvas')
+  canvas.width = width
+  canvas.height = height
 
-  document.body.appendChild(canvas);
+  document.body.appendChild(canvas)
 
   const heatmap = new HeatMap({
     canvas,
@@ -121,50 +120,54 @@ function dynamicData () {
         }
       }
     }
-  });
+  })
 
-  let x = width / 2;
-  let y = height / 2;
-  let dx = 0;
-  let dy = 0;
+  let x = width / 2
+  let y = height / 2
+  let dx = 0
+  let dy = 0
 
-  let step = 0;
+  let step = 0
 
   setInterval(() => {
-    step++;
+    step++
     heatmap.add([
       x, y,
       Math.random(),
       // Math.sin(step / 100)
       dx * dx + dy * dy
-    ]);
+    ])
 
-    dx += maxDD * Math.random() - maxDD / 2;
-    dy += maxDD * Math.random() - maxDD / 2;
+    dx += maxDD * Math.random() - maxDD / 2
+    dy += maxDD * Math.random() - maxDD / 2
 
-    dx = Math.max(Math.min(dx, maxD), -maxD);
-    dy = Math.max(Math.min(dy, maxD), -maxD);
+    dx = Math.max(Math.min(dx, maxD), -maxD)
+    dy = Math.max(Math.min(dy, maxD), -maxD)
 
-    x += dx;
-    y += dy;
+    x += dx
+    y += dy
 
     if (x > width) {
-      x -= width;
+      x -= width
     } else if (x < 0) {
-      x += width;
+      x += width
     }
     if (y > height) {
-      y -= height;
+      y -= height
     } else if (y < 0) {
-      y += height;
+      y += height
     }
 
-    console.time(`render: ${step}`);
+    console.time(`render: ${step}`)
     heatmap.render().then(() => {
-      console.timeEnd(`render: ${step}`);
-    });
-  }, 1000 / 60);
+      console.timeEnd(`render: ${step}`)
+    })
+  }, 1000 / 60)
 }
 
 // staticData();
-dynamicData();
+if (process.env.STATIC_DATA) {
+  staticData()
+} else {
+  dynamicData()
+}

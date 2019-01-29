@@ -4,7 +4,7 @@
   "description": "advanced heatmap",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint lib",
+    "lint": "eslint lib example",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
