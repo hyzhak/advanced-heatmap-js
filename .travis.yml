@@ -1,3 +1,8 @@
 language: node_js
 node_js:
   - "11"
+
+script:
+  - yarn run lint
+  - yarn test
+  - yarn run build
