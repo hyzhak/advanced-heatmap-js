@@ -4,6 +4,6 @@ import HeatMap from '../../'
 
 describe('heatmap', () => {
   it('should construct', () => {
-    expect(new HeatMap()).to.be.defined
+    expect(new HeatMap()).to.be.not.undefined
   })
 })
