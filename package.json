@@ -2,9 +2,13 @@
   "name": "advanced-heatmap",
   "version": "0.1.0",
   "description": "advanced heatmap",
-  "main": "index.js",
+  "browser": "dist/adv-heatmap.umd.js",
+  "main": "dist/adv-heatmap.cjs.js",
+  "module": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "lint": "eslint lib example tests index.js rollup.config.js",
+    "test": "mocha-webpack --opts ./tests/mocha.opts"
   },
   "repository": {
     "type": "git",
@@ -26,7 +30,34 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.1",
-    "babel-loader": "^8.0.5"
-  }
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "canvas": "^2.3.1",
+    "chai": "^4.2.0",
+    "eslint": "^5.12.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-chai-friendly": "^0.4.1",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-mocha": "^5.2.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jsdom": "^13.2.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.2.0",
+    "mocha-webpack": "2.0.0-beta.0",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-license": "^0.8.1",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "sinon": "^7.2.3",
+    "sinon-chai": "^3.3.0",
+    "webpack": "^4.29.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {}
 }

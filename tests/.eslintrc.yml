@@ -1,0 +1,12 @@
+env:
+  mocha: true
+
+plugins:
+  - chai-friendly
+  - mocha
+
+rules:
+  # allow chai.js notation
+  no-unused-expressions:
+    - off
+  chai-friendly/no-unused-expressions: 2

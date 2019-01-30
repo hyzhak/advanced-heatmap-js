@@ -1,0 +1,10 @@
+--colors
+--interactive false
+--recursive
+--reporter spec
+--require ./tests/_setup.js
+--require jsdom-global/register
+--ui bdd
+--webpack-config ./config/webpack.config-test.js
+
+./tests/**/*.spec.js

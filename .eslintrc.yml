@@ -1,0 +1,33 @@
+env:
+  browser: true
+  es6: true
+  node: true
+
+extends:
+  - 'plugin:mocha/recommended'
+  - 'standard'
+
+parser: 'babel-eslint'
+
+parserOptions:
+  ecmaVersion: 2019
+  ecmaFeatures:
+    classes: true
+    experimentalObjectRestSpread: true
+  sourceType: module
+
+plugins:
+  - mocha
+
+rules:
+#  FIXME: allow to use until I add logging lib
+#  https://github.com/fire-marshal/fire-marshal/issues/35
+#  no-console:
+#    - error
+#    - allow:
+#      - warn
+#      - error
+
+  linebreak-style:
+    - error
+    - unix
