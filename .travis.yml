@@ -10,6 +10,6 @@ install:
   - (cd $DIR; npm install)
 
 script:
-  - (cd $APP; yarn run lint)
-  - (cd $APP; yarn test)
-  - (cd $APP; yarn run build)
+  - (cd $DIR; yarn run lint)
+  - (cd $DIR; yarn test)
+  - (cd $DIR; yarn run build)
