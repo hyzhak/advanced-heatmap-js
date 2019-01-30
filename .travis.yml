@@ -2,7 +2,14 @@ language: node_js
 node_js:
   - "11"
 
+env:
+  - DIR=.
+  - DIR=example/hello-world
+
+install:
+  - (cd $DIR; npm install)
+
 script:
-  - yarn run lint
-  - yarn test
-  - yarn run build
+  - (cd $APP; yarn run lint)
+  - (cd $APP; yarn test)
+  - (cd $APP; yarn run build)
