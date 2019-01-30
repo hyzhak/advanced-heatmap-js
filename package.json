@@ -2,10 +2,12 @@
   "name": "advanced-heatmap",
   "version": "0.1.0",
   "description": "advanced heatmap",
-  "main": "index.js",
+  "browser": "dist/adv-heatmap.umd.js",
+  "main": "dist/adv-heatmap.cjs.js",
+  "module": "./index.js",
   "scripts": {
     "build": "rollup -c",
-    "lint": "eslint lib example",
+    "lint": "eslint lib example index.js rollup.config.js",
     "test": "npm run lint"
   },
   "repository": {
@@ -39,6 +41,11 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "rollup": "^1.1.2"
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-license": "^0.8.1",
+    "rollup-plugin-node-resolve": "^4.0.0"
   }
 }
