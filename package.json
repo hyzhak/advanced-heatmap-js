@@ -7,7 +7,7 @@
   "module": "./index.js",
   "scripts": {
     "build": "rollup -c",
-    "lint": "eslint lib example tests index.js rollup.config.js",
+    "lint": "eslint lib tests index.js rollup.config.js",
     "test": "mocha-webpack --opts ./tests/mocha.opts"
   },
   "repository": {
